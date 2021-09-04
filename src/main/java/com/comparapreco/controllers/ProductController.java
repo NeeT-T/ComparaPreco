@@ -24,7 +24,7 @@ public class ProductController {
 			@RequestParam(required = false, defaultValue = "0") Integer page,
 			@RequestParam(required = false, defaultValue = "12") Integer size,
 			@RequestParam(required = false, defaultValue = "ASC") String direction,
-			@RequestParam(required = false, defaultValue = "name") String orderby,
+			@RequestParam(required = false, defaultValue = "nome") String orderby,
 			@RequestParam(required = false) String nome,
 			@RequestParam(required = false) Double preco,
 			@RequestParam(required = false) String nomeMarca,

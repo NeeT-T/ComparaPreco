@@ -24,11 +24,15 @@ public class ProductController {
 			@RequestParam(required = false, defaultValue = "0") Integer page,
 			@RequestParam(required = false, defaultValue = "12") Integer size,
 			@RequestParam(required = false, defaultValue = "ASC") String direction,
-			@RequestParam(required = false, defaultValue = "name") String orderby
+			@RequestParam(required = false, defaultValue = "name") String orderby,
+			@RequestParam(required = false) String nome,
+			@RequestParam(required = false) Double preco,
+			@RequestParam(required = false) String nomeMarca,
+			@RequestParam(required = false) String nomeCategoria
 		) {
 		
 		try {
-			return new ResponseEntity<Page<ProductDTO>>(productService.findAll(page, size, direction, orderby), HttpStatus.OK);
+			return new ResponseEntity<Page<ProductDTO>>(productService.findAll(nome, preco, nomeMarca, nomeCategoria, page, size, direction, orderby), HttpStatus.OK);
 		} catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
 		}

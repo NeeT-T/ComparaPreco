@@ -36,7 +36,6 @@ public class Loja {
 	private String localizacao;
 	
     @ManyToMany(mappedBy = "lojas", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({ "lojas", "produtos", "produtos" })
     private Set<Produto> produtos = new HashSet<>();
 
 	public Loja() {}

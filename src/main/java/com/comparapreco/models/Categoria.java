@@ -12,10 +12,10 @@ import javax.persistence.Table;
 public class Categoria {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name = "nome")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String nome;
 	
 	public Categoria() {}

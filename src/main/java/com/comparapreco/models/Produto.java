@@ -49,7 +49,6 @@ public class Produto {
     inverseJoinColumns = {
             @JoinColumn(name = "id_lojas", referencedColumnName = "id",
                     nullable = false, updatable = false)})
-	@JsonIgnoreProperties({ "produtos", "lojas" })
 	private Set<Loja> lojas = new HashSet<>();
 
 	public Produto() {}
@@ -60,6 +59,14 @@ public class Produto {
 		this.setMarca(marca);
 		this.setCategoria(categoria);
 		this.setLojas(lojas);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -92,14 +99,6 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Set<Loja> getLojas() {

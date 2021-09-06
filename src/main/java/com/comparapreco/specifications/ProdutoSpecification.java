@@ -11,15 +11,11 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.comparapreco.models.Produto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class ProdutoSpecification implements Specification<Produto> {
     /**
 	 * 
@@ -32,12 +28,13 @@ public class ProdutoSpecification implements Specification<Produto> {
     private String nomeMarca;
     private String nomeCategoria;
     
+    public ProdutoSpecification() {}
 
-	public ProdutoSpecification(String nome, Double preco, String marca, String categoria) {
-	this.nome = nome;
-	this.preco = preco;
-	this.nomeMarca = nomeMarca;
-	this.nomeCategoria = nomeCategoria;
+	public ProdutoSpecification(String nome, Double preco, String nomeCategoria, String nomeMarca) {
+		this.nome = nome;
+		this.preco = preco;
+		this.nomeMarca = nomeMarca;
+		this.nomeCategoria = nomeCategoria;
 	}
 
 
@@ -61,11 +58,8 @@ public class ProdutoSpecification implements Specification<Produto> {
     		Predicate p = criteriaBuilder.like(root.get("nomeCategoria"), "%" + nomeCategoria + "%");
     		predicates.add(p);
     	}
-    	    	
     	return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
 		
     }
-
-
-	}
+}
 

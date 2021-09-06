@@ -21,19 +21,12 @@ public class ProductService {
 	@Autowired
 	IProductRepository iProductRepository;
 	
-	public Page<ProductDTO> findAll(String nome, Double preco, String nomeMarca, String nomeCategoria, Integer page, Integer size, String direction, String orderby) {
+	public Page<ProductDTO> findAll( String nome, Double preco, String nomeMarca, String nomeCategoria, Integer page, Integer size, String direction, String orderby) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(direction), orderby);
-		
 		ProdutoSpecification specification = new ProdutoSpecification(nome,preco,nomeMarca,nomeCategoria);
-		
-		// Qual o tipo de dado que o banco retorna? No caso de não haver o cast
-		Page<Produto> productsFromDB = (Page<Produto>) iProductRepository.findAll(specification, pageRequest);
-
+		Page<Produto> productsFromDB = (Page<Produto>) iProductRepository.findAll(specification, pageRequest);  // Qual o tipo de dado que o banco retorna? No caso de não haver o cast
 		List<ProductDTO> products = productsFromDB.stream()
 				.map(product -> new ProductDTO(product)).collect(Collectors.toList());
-		
-		
-		
 		return new PageImpl<ProductDTO>(products, pageRequest, productsFromDB.getTotalElements());
 		
 	}

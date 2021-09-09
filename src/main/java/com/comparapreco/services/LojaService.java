@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,8 @@ public class LojaService {
 
 	@Autowired
 	ILojaRepository iLojaRepository;
-	
+
+	// @Cacheable("lojas")
 	public Page<LojaDTO> findAll( String nome, String telefone, String cnpj, String localizacao, Integer page, Integer size, String direction, String orderby) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(direction), orderby);
 		LojaSpecification specification = new LojaSpecification(nome, telefone, cnpj, localizacao);

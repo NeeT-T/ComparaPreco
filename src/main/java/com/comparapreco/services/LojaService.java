@@ -23,7 +23,7 @@ public class LojaService {
 	@Autowired
 	ILojaRepository iLojaRepository;
 
-	@Cacheable("lojas")
+//	@Cacheable("lojas")
 	public Page<LojaDTO> findAll( String nome, String telefone, String cnpj, String localizacao, Integer page, Integer size, String direction, String orderby) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(direction), orderby);
 		LojaSpecification specification = new LojaSpecification(nome, telefone, cnpj, localizacao);

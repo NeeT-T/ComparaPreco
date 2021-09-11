@@ -3,12 +3,15 @@ package com.comparapreco.models;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -40,7 +43,14 @@ public class Loja implements Serializable {
 	@Column(name = "localizacao")
 	private String localizacao;
 	
-    @ManyToMany(mappedBy = "lojas", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(name = "lojas_produtos",
+    joinColumns = {
+            @JoinColumn(name = "id_lojas", referencedColumnName = "id",
+                    nullable = false, updatable = false)},
+    inverseJoinColumns = {
+            @JoinColumn(name = "id_produtos", referencedColumnName = "id",
+                    nullable = false, updatable = false)})
     private Set<Produto> produtos;
 
 	public Loja() {}

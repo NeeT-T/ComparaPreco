@@ -48,14 +48,7 @@ public class Produto implements Serializable {
 	@JoinColumn(name = "id_categorias")
 	private Categoria categoria;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-	@JoinTable(name = "lojas_produtos",
-    joinColumns = {
-            @JoinColumn(name = "id_produtos", referencedColumnName = "id",
-                    nullable = false, updatable = false)},
-    inverseJoinColumns = {
-            @JoinColumn(name = "id_lojas", referencedColumnName = "id",
-                    nullable = false, updatable = false)})
+    @ManyToMany(mappedBy = "produtos", fetch = FetchType.EAGER)
 	private Set<Loja> lojas;
 
 	public Produto() {}

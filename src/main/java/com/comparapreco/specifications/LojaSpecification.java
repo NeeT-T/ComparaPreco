@@ -38,15 +38,15 @@ public class LojaSpecification implements Specification<Loja> {
     		predicates.add(p);
     	}
     	if(this.telefone != null) {
-    		Predicate p = criteriaBuilder.like(root.get("preco"), "%" + telefone + "%");
+    		Predicate p = criteriaBuilder.like(root.get("telefone"), "%" + telefone + "%");
     		predicates.add(p);
     	}
     	if(this.cnpj != null) {
-    		Predicate p = criteriaBuilder.like(root.get("nomeMarca"), "%" + cnpj + "%");
+    		Predicate p = criteriaBuilder.like(root.get("cnpj"), "%" + cnpj + "%");
     		predicates.add(p);
     	}
     	if(this.localizacao != null) {
-    		Predicate p = criteriaBuilder.like(root.get("nomeCategoria"), "%" + localizacao + "%");
+    		Predicate p = criteriaBuilder.like(root.get("localizacao"), "%" + localizacao + "%");
     		predicates.add(p);
     	}
     	return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));

@@ -24,11 +24,11 @@ public class ProdutoSpecification implements Specification<Produto> {
 
 	public ProdutoSpecification() {}
 
-	public ProdutoSpecification(String nome, Double preco, String nomeCategoria, String nomeMarca) {
+	public ProdutoSpecification(String nome, Double preco, String nomeMarca, String nomeCategoria) {
 		this.setNome(nome);
 		this.setPreco(preco);
-		this.setNomeCategoria(nomeCategoria);
 		this.setNomeMarca(nomeMarca);
+		this.setNomeCategoria(nomeCategoria);
 	}
 
 	@Override
@@ -44,11 +44,11 @@ public class ProdutoSpecification implements Specification<Produto> {
     		predicates.add(p);
     	}
     	if(this.nomeMarca != null) {
-    		Predicate p = criteriaBuilder.like(root.get("nomeMarca"), "%" + nomeMarca + "%");
+    		Predicate p = criteriaBuilder.like(root.get("marca").get("nome"), "%" + nomeMarca + "%");
     		predicates.add(p);
     	}
     	if(this.nomeCategoria != null) {
-    		Predicate p = criteriaBuilder.like(root.get("nomeCategoria"), "%" + nomeCategoria + "%");
+    		Predicate p = criteriaBuilder.like(root.get("categoria").get("nome"), "%" + nomeCategoria + "%");
     		predicates.add(p);
     	}
     	return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));

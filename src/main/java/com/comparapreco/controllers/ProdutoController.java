@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,11 +34,12 @@ public class ProdutoController {
 			@RequestParam(required = false) String nomeCategoria
 		) {
 		
-		try {
-			return new ResponseEntity<Page<ProdutoDTO>>(produtoService.findAll(nome, preco, nomeMarca, nomeCategoria, page, size, direction, orderby), HttpStatus.OK);
-		} catch(Exception e) {
-			return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
-		}
-		
+		return new ResponseEntity<Page<ProdutoDTO>>(produtoService.findAll(nome, preco, nomeMarca, nomeCategoria, page, size, direction, orderby), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ProdutoDTO> findById (@PathVariable Integer id) {
+		return new ResponseEntity<ProdutoDTO>(produtoService.findById(id), HttpStatus.OK);
 	}
 }

@@ -1,6 +1,6 @@
 package com.comparapreco.models;
 
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,14 +15,18 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="produtos")
-public class Produto {
+public class Produto implements Serializable {
 	
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 4089388603729401078L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -41,7 +45,7 @@ public class Produto {
 	@JoinColumn(name = "id_categorias")
 	private Categoria categoria;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "lojas_produtos",
     joinColumns = {
             @JoinColumn(name = "id_produtos", referencedColumnName = "id",
@@ -49,7 +53,7 @@ public class Produto {
     inverseJoinColumns = {
             @JoinColumn(name = "id_lojas", referencedColumnName = "id",
                     nullable = false, updatable = false)})
-	private Set<Loja> lojas = new HashSet<>();
+	private Set<Loja> lojas;
 
 	public Produto() {}
 

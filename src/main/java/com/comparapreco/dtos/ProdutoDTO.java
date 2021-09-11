@@ -1,5 +1,6 @@
 package com.comparapreco.dtos;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,15 +8,21 @@ import com.comparapreco.models.Loja;
 import com.comparapreco.models.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class ProdutoDTO {
+public class ProdutoDTO implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5052620967082868145L;
 	private Integer id;
 	private String nome;
 	private Double preco;
 	private String nomeMarca;
 	private String nomeCategoria;
 	@JsonIgnoreProperties("produtos")
-	private Set<Loja> lojas = new HashSet<Loja>();
+	private Set<Loja> lojas;
+	
+	public ProdutoDTO() {}
 	
 	public ProdutoDTO(Produto produto) {
 		this.setId(produto.getId());

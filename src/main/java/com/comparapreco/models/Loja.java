@@ -1,7 +1,6 @@
 package com.comparapreco.models;
 
-import java.util.HashSet;
-import java.util.Objects;
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,11 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "lojas")
-public class Loja {
+public class Loja implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +37,8 @@ public class Loja {
 	@Column(name = "localizacao")
 	private String localizacao;
 	
-    @ManyToMany(mappedBy = "lojas", fetch = FetchType.LAZY)
-    private Set<Produto> produtos = new HashSet<>();
+    @ManyToMany(mappedBy = "lojas", fetch = FetchType.EAGER)
+    private Set<Produto> produtos;
 
 	public Loja() {}
 	

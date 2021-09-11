@@ -33,10 +33,10 @@ public class LojaController {
 			@RequestParam(required = false) String nome,
 			@RequestParam(required = false) String telefone,
 			@RequestParam(required = false) String cnpj,
-			@RequestParam(required = false) String localizacao
+			@RequestParam(required = false) String cep
 		) {
 		
-		return new ResponseEntity<Page<LojaDTO>>(lojaService.findAll(nome, telefone, cnpj, localizacao, page, size, direction, orderby), HttpStatus.OK);
+		return new ResponseEntity<Page<LojaDTO>>(lojaService.findAll(nome, telefone, cnpj, cep, page, size, direction, orderby), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")

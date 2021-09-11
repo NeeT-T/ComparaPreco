@@ -20,13 +20,13 @@ public class LojaSpecification implements Specification<Loja> {
 	private String nome;
 	private String telefone;
 	private String cnpj;
-	private String localizacao;
+	private String cep;
 	
-	public LojaSpecification(String nome, String telefone, String cnpj, String localizacao) {
+	public LojaSpecification(String nome, String telefone, String cnpj, String cep) {
 		this.setNome(nome);
 		this.setTelefone(telefone);
 		this.setCnpj(cnpj);
-		this.setLocalizacao(localizacao);
+		this.setCep(cep);
 	}
 
 	@Override
@@ -45,10 +45,11 @@ public class LojaSpecification implements Specification<Loja> {
     		Predicate p = criteriaBuilder.like(root.get("cnpj"), "%" + cnpj + "%");
     		predicates.add(p);
     	}
-    	if(this.localizacao != null) {
-    		Predicate p = criteriaBuilder.like(root.get("localizacao"), "%" + localizacao + "%");
+    	if(this.cep != null) {
+    		Predicate p = criteriaBuilder.like(root.get("cep"), "%" + "cep" + "%");
     		predicates.add(p);
     	}
+    	
     	return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
 	}
 	
@@ -76,16 +77,16 @@ public class LojaSpecification implements Specification<Loja> {
 		this.cnpj = cnpj;
 	}
 
-	public String getLocalizacao() {
-		return localizacao;
-	}
-
-	public void setLocalizacao(String localizacao) {
-		this.localizacao = localizacao;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 }

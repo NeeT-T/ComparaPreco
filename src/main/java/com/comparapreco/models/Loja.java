@@ -40,8 +40,14 @@ public class Loja implements Serializable {
 	@Column(name = "cnpj")
 	private String cnpj;
 	
-	@Column(name = "localizacao")
-	private String localizacao;
+	@Column
+	private String cep;
+	
+	@Column
+	private String latitude;
+	
+	@Column
+	private String longitude;
 	
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "lojas_produtos",
@@ -55,13 +61,15 @@ public class Loja implements Serializable {
 
 	public Loja() {}
 	
-	public Loja(Integer id, String nome, String foto, String telefone, String cnpj, String localizacao, Set<Produto> produtos) {
+	public Loja(Integer id, String nome, String foto, String telefone, String cnpj, String cep, String longitude, String latitude, Set<Produto> produtos) {
 		this.setId(id);
 		this.setNome(nome);
 		this.setFoto(foto);
 		this.setTelefone(telefone);
 		this.setCnpj(cnpj);
-		this.setLocalizacao(localizacao);
+		this.setCep(cep);
+		this.setLatitude(latitude);
+		this.setLongitude(longitude);
 		this.setProdutos(produtos);
 	}
 
@@ -105,13 +113,30 @@ public class Loja implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	public String getLocalizacao() {
-		return localizacao;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setLocalizacao(String localizacao) {
-		this.localizacao = localizacao;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	
 	
 	public Set<Produto> getProdutos() {
 		return produtos;

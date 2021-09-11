@@ -16,11 +16,14 @@ public class LojaDTO implements Serializable {
 	private static final long serialVersionUID = 2L;
 	private Integer Id;
 	private String nome;
-	private String foto; 
+	private String foto;
 	private String telefone;
+	private String cep;
+	private String latitude;
+	private String longitude;
+
 	@JsonIgnoreProperties("cnpj")
 	private String cnpj;
-	private String localizacao;
 	@JsonIgnoreProperties("lojas")
 	private Set<Produto> produtos;
 
@@ -32,8 +35,10 @@ public class LojaDTO implements Serializable {
 		this.setNome(loja.getNome());
 		this.setTelefone(loja.getTelefone());
 		this.setCnpj(loja.getCnpj());
-		this.setLocalizacao(loja.getLocalizacao());
 		this.setProdutos(loja.getProdutos());
+		this.setCep(loja.getCep());
+		this.setLatitude(loja.getLatitude());
+		this.setLongitude(loja.getLongitude());
 	}
 
 	public Integer getId() {
@@ -59,6 +64,30 @@ public class LojaDTO implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
 
 	public String getTelefone() {
 		return telefone;
@@ -74,14 +103,6 @@ public class LojaDTO implements Serializable {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
-	}
-
-	public String getLocalizacao() {
-		return localizacao;
-	}
-
-	public void setLocalizacao(String localizacao) {
-		this.localizacao = localizacao;
 	}
 
 	public Set<Produto> getProdutos() {

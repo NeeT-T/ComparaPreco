@@ -31,6 +31,9 @@ public class Loja implements Serializable {
 	@Column(name = "telefone")
 	private String telefone;
 
+	@Column(name = "foto")
+	private String foto;
+
 	@Column(name = "cnpj")
 	private String cnpj;
 	
@@ -42,9 +45,10 @@ public class Loja implements Serializable {
 
 	public Loja() {}
 	
-	public Loja(Integer id, String nome, String telefone, String cnpj, String localizacao, Set<Produto> produtos) {
+	public Loja(Integer id, String nome, String foto, String telefone, String cnpj, String localizacao, Set<Produto> produtos) {
 		this.setId(id);
 		this.setNome(nome);
+		this.setFoto(foto);
 		this.setTelefone(telefone);
 		this.setCnpj(cnpj);
 		this.setLocalizacao(localizacao);
@@ -65,6 +69,14 @@ public class Loja implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getTelefone() {

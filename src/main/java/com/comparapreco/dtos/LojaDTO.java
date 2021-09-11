@@ -16,6 +16,7 @@ public class LojaDTO implements Serializable {
 	private static final long serialVersionUID = 2L;
 	private Integer Id;
 	private String nome;
+	private String foto; 
 	private String telefone;
 	@JsonIgnoreProperties("cnpj")
 	private String cnpj;
@@ -27,6 +28,7 @@ public class LojaDTO implements Serializable {
 	
 	public LojaDTO(Loja loja) {
 		this.setId(loja.getId());
+		this.setFoto(loja.getFoto());
 		this.setNome(loja.getNome());
 		this.setTelefone(loja.getTelefone());
 		this.setCnpj(loja.getCnpj());
@@ -44,6 +46,14 @@ public class LojaDTO implements Serializable {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public void setNome(String nome) {

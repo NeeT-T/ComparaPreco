@@ -16,6 +16,7 @@ public class ProdutoDTO implements Serializable {
 	private static final long serialVersionUID = 5052620967082868145L;
 	private Integer id;
 	private String nome;
+	private String foto;
 	private Double preco;
 	private String nomeMarca;
 	private String nomeCategoria;
@@ -27,6 +28,7 @@ public class ProdutoDTO implements Serializable {
 	public ProdutoDTO(Produto produto) {
 		this.setId(produto.getId());
 		this.setNome(produto.getNome());
+		this.setFoto(produto.getFoto());
 		this.setPreco(produto.getPreco());
 		this.setNomeMarca(produto.getMarca().getNome());
 		this.setNomeCategoria(produto.getCategoria().getNome());
@@ -43,6 +45,14 @@ public class ProdutoDTO implements Serializable {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public void setNome(String nome) {

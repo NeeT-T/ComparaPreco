@@ -36,6 +36,9 @@ public class Produto implements Serializable {
 	
 	@Column
 	private Double preco;
+
+	@Column
+	private String foto;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_marca")
@@ -57,9 +60,10 @@ public class Produto implements Serializable {
 
 	public Produto() {}
 
-	public Produto(String nome, Double preco, Marca marca, Categoria categoria, Set<Loja> lojas) {
+	public Produto(String nome, Double preco, String foto, Marca marca, Categoria categoria, Set<Loja> lojas) {
 		this.setNome(nome);
 		this.setPreco(preco);
+		this.setFoto(foto);
 		this.setMarca(marca);
 		this.setCategoria(categoria);
 		this.setLojas(lojas);
@@ -79,6 +83,14 @@ public class Produto implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
 	public Double getPreco() {

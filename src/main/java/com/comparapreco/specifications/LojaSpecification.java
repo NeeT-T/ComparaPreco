@@ -48,11 +48,11 @@ public class LojaSpecification implements Specification<Loja> {
     		predicates.add(p);
     	}
     	if(this.cep != null) {
-    		Predicate p = criteriaBuilder.like(root.get("cep"), "%" + "cep" + "%");
+    		Predicate p = criteriaBuilder.like(root.get("cep"), "%" + cep + "%");
     		predicates.add(p);
     	}
     	if(this.logradouro != null) {
-    		Predicate p = criteriaBuilder.like(root.get("logradouro"), "%" + "logradouro" + "%");
+    		Predicate p = criteriaBuilder.like(root.get("logradouro"), "%" + logradouro + "%");
     		predicates.add(p);
     	}
     	

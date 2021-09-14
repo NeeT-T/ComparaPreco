@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +23,7 @@ public class ProdutoService {
 	@Autowired
 	IProductRepository iProductRepository;
 	
-	@Cacheable("produtos")
+//	@Cacheable("produtos")
 	public Page<ProdutoDTO> findAll( String nome, Double preco, String marca, String categoria, Integer page, Integer size, String direction, String orderby) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(direction), orderby);
 		ProdutoSpecification specification = new ProdutoSpecification(nome, preco, marca, categoria);

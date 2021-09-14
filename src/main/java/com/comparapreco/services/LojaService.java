@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +23,7 @@ public class LojaService {
 	@Autowired
 	ILojaRepository iLojaRepository;
 
-	@Cacheable("lojas")
+//	@Cacheable("lojas")
 	public Page<LojaDTO> findAll(String nome, String telefone, String cnpj, String cep, String logradouro, Integer page, Integer size, String direction, String orderby) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(direction), orderby);
 		LojaSpecification specification = new LojaSpecification(nome, telefone, cnpj, cep, logradouro);
@@ -33,7 +33,7 @@ public class LojaService {
 		return new PageImpl<LojaDTO>(lojas, pageRequest, lojasFromDB.getTotalElements());
 	}
 	
-	@Cacheable("lojas#id")
+//	@Cacheable("lojas#id")
 	public LojaDTO findById(Integer id) {
 		Optional<Loja> optional = iLojaRepository.findById(id);
 		if (optional.isPresent()) {

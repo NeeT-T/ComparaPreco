@@ -23,7 +23,7 @@ public class ProdutoService {
 	@Autowired
 	IProductRepository iProductRepository;
 	
-	@Cacheable("produtos")
+//	@Cacheable("produtos")
 	public Page<ProdutoDTO> findAll( String nome, Double preco, String marca, String categoria, Integer page, Integer size, String direction, String orderby) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.valueOf(direction), orderby);
 		ProdutoSpecification specification = new ProdutoSpecification(nome, preco, marca, categoria);

@@ -44,6 +44,9 @@ public class Loja implements Serializable {
 	private String cep;
 	
 	@Column
+	private String logradouro;
+
+	@Column
 	private String latitude;
 	
 	@Column
@@ -121,6 +124,14 @@ public class Loja implements Serializable {
 		this.cep = cep;
 	}
 
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+	
 	public String getLatitude() {
 		return latitude;
 	}

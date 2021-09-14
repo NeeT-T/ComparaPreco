@@ -19,9 +19,9 @@ public class LojaDTO implements Serializable {
 	private String foto;
 	private String telefone;
 	private String cep;
+	private String logradouro;
 	private String latitude;
 	private String longitude;
-
 	@JsonIgnoreProperties("cnpj")
 	private String cnpj;
 	@JsonIgnoreProperties("lojas")
@@ -37,6 +37,7 @@ public class LojaDTO implements Serializable {
 		this.setCnpj(loja.getCnpj());
 		this.setProdutos(loja.getProdutos());
 		this.setCep(loja.getCep());
+		this.setLogradouro(loja.getLogradouro());
 		this.setLatitude(loja.getLatitude());
 		this.setLongitude(loja.getLongitude());
 	}
@@ -75,6 +76,14 @@ public class LojaDTO implements Serializable {
 	
 	public String getCep() {
 		return cep;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public void setLatitude(String latitude) {

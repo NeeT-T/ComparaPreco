@@ -1,7 +1,5 @@
 package com.comparapreco.controllers;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -33,10 +31,11 @@ public class LojaController {
 			@RequestParam(required = false) String nome,
 			@RequestParam(required = false) String telefone,
 			@RequestParam(required = false) String cnpj,
-			@RequestParam(required = false) String cep
+			@RequestParam(required = false) String cep,
+			@RequestParam(required = false) String logradouro
 		) {
 		
-		return new ResponseEntity<Page<LojaDTO>>(lojaService.findAll(nome, telefone, cnpj, cep, page, size, direction, orderby), HttpStatus.OK);
+		return new ResponseEntity<Page<LojaDTO>>(lojaService.findAll(nome, telefone, cnpj, cep, logradouro, page, size, direction, orderby), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
